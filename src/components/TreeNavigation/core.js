@@ -74,6 +74,7 @@ export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const path = sanitizePath(item.path);
   const external = item.external;
+  const custom = item.custom;
 
   // item is its own parent
   if (parent === undefined) {
@@ -84,48 +85,61 @@ export const getItemMetadata = (item, parent) => {
       };
     }
 
-    if (external !== undefined) {
+    if (external !== undefined && custom === undefined) {
       return {
         path: '',
         target: external,
       };
     }
 
-    if (path !== undefined) {
+    if (path !== undefined && custom === undefined) {
       return {
         path: path,
         target: path,
       };
     }
 
-    if (element !== undefined) {
+    if (element !== undefined && custom === undefined) {
       return {
         path: '',
         target: '/' + element,
+      };
+    }
+    if (custom !== undefined) {
+      return {
+        path: '',
+        custom: custom,
       };
     }
   }
 
   const parentPath = sanitizePath(parent.meta.path);
 
-  if (external !== undefined) {
+  if (external !== undefined && custom === undefined) {
     return {
       path: parentPath,
       target: external,
     };
   }
 
-  if (path !== undefined) {
+  if (path !== undefined && custom === undefined) {
     return {
       path: parentPath + path,
       target: parentPath + path,
     };
   }
 
-  if (element !== undefined) {
+  if (element !== undefined  && custom === undefined) {
     return {
       path: parentPath,
       target: sanitizePath(parentPath + element),
+    };
+  }
+
+  if (custom !== undefined) {
+    return {
+      path: parentPath,
+      custom: custom,
     };
   }
 

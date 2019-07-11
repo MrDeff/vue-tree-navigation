@@ -1,11 +1,18 @@
 <template>
   <div id="app">
-    <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
+    <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" >
+      <slot>
+         <span style="color:red">ok</span>
+      </slot>
+      <span slot-scope="item">
+        <span style="color:red">{{item.text}}</span>
+      </span>
+    </vue-tree-navigation>
 
     <hr>
     <h2>Router View</h2>
     <router-view></router-view>
-    
+
     <hr>
     <h2>About (this section is not part of router view)</h2>
     <ul>
@@ -24,6 +31,7 @@ export default {
     return {
       items: [
         { name: 'Home', path: 'home' },
+        { name: 'red', custom: 'custom' },
         {
           name: 'Products',
           path: 'products',
@@ -32,7 +40,7 @@ export default {
               name: 'Running shoes',
               path: 'shoes',
               children: [
-                { name: 'Race', element: 'race' },
+                { name: 'red', custom: 'custom' },
                 { name: 'Road', element: 'road' },
                 { name: 'Trail', element: 'trail' },
               ],

@@ -3,6 +3,13 @@
     class="NavigationItem"
     :class="classes">
 
+
+    <span
+      v-if="showCustom"
+      class="NavigationItem__label">
+        <slot :item="item">ok</slot>
+      </span>
+
     <span
       v-if="showLabel"
       class="NavigationItem__label">{{ item.name }}</span>
@@ -60,6 +67,11 @@ export default {
     },
   },
   computed: {
+    showCustom() {
+      return (
+        this.item.custom !== undefined
+      );
+    },
     showLabel() {
       return (
         this.item.path === undefined &&
