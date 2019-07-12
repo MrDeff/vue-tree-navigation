@@ -6,7 +6,7 @@
     <span
       v-if="showLabel"
       class="NavigationItem__label">
-        <img v-if="item.image" class="NavigationItem__label__img" :src="item.image"/>
+        <span v-if="item.image" class="NavigationItem__label__img"><img :src="item.image"/></span>
         <span class="NavigationItem__label__name">{{ item.name }}</span>
         <span v-if="item.number" class="NavigationItem__label__number">{{ item.number }}</span>
     </span>
