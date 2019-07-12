@@ -3,16 +3,13 @@
     class="NavigationItem"
     :class="classes">
 
-
-    <span
-      v-if="showCustom"
-      class="NavigationItem__label">
-        <slot :item="item">ok</slot>
-      </span>
-
     <span
       v-if="showLabel"
-      class="NavigationItem__label">{{ item.name }}</span>
+      class="NavigationItem__label">
+        <img v-if="item.image" class="NavigationItem__label__img" :src="item.image"/>
+        <span class="NavigationItem__label__name">{{ item.name }}</span>
+        <span v-if="item.number" class="NavigationItem__label__number">{{ item.number }}</span>
+    </span>
 
     <router-link
       v-if="showRouterLink"
@@ -67,16 +64,12 @@ export default {
     },
   },
   computed: {
-    showCustom() {
-      return (
-        this.item.custom !== undefined
-      );
-    },
     showLabel() {
       return (
         this.item.path === undefined &&
         this.item.element === undefined &&
-        this.item.external === undefined
+        this.item.external === undefined &&
+        this.item.custom === undefined
       );
     },
     showRouterLink() {

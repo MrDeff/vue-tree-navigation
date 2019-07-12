@@ -1,12 +1,6 @@
 <template>
   <div id="app">
     <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" >
-      <slot>
-         <span style="color:red">ok</span>
-      </slot>
-      <span slot-scope="item">
-        <span style="color:red">{{item.text}}</span>
-      </span>
     </vue-tree-navigation>
 
     <hr>
@@ -31,7 +25,7 @@ export default {
     return {
       items: [
         { name: 'Home', path: 'home' },
-        { name: 'red', custom: 'custom' },
+        { name: 'red', image: 'http://icons.iconarchive.com/icons/custom-icon-design/flag-2/256/India-Flag-icon.png', number:23 },
         {
           name: 'Products',
           path: 'products',
@@ -40,7 +34,7 @@ export default {
               name: 'Running shoes',
               path: 'shoes',
               children: [
-                { name: 'red', custom: 'custom' },
+                { name: 'red' },
                 { name: 'Road', element: 'road' },
                 { name: 'Trail', element: 'trail' },
               ],

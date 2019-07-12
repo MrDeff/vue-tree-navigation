@@ -74,77 +74,85 @@ export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const path = sanitizePath(item.path);
   const external = item.external;
-  const custom = item.custom;
+  const image = item.img;
+  const number = item.number
 
   // item is its own parent
   if (parent === undefined) {
+
     if (element === undefined && path === undefined && external === undefined) {
       return {
         path: '',
         target: '',
+        image: image,
+        number: number
       };
     }
 
-    if (external !== undefined && custom === undefined) {
+
+    if (external !== undefined) {
       return {
         path: '',
         target: external,
+        image: image,
+        number: number
       };
     }
 
-    if (path !== undefined && custom === undefined) {
+    if (path !== undefined) {
       return {
         path: path,
         target: path,
+        image: image,
+        number: number
       };
     }
 
-    if (element !== undefined && custom === undefined) {
+    if (element !== undefined) {
       return {
         path: '',
         target: '/' + element,
+        image: image,
+        number: number
       };
     }
-    if (custom !== undefined) {
-      return {
-        path: '',
-        custom: custom,
-      };
-    }
+
   }
 
   const parentPath = sanitizePath(parent.meta.path);
 
-  if (external !== undefined && custom === undefined) {
+
+  if (external !== undefined) {
     return {
       path: parentPath,
       target: external,
+      image: image,
+      number: number
     };
   }
 
-  if (path !== undefined && custom === undefined) {
+  if (path !== undefined) {
     return {
       path: parentPath + path,
       target: parentPath + path,
+      image: image,
+      number: number
     };
   }
 
-  if (element !== undefined  && custom === undefined) {
+  if (element !== undefined) {
     return {
       path: parentPath,
       target: sanitizePath(parentPath + element),
-    };
-  }
-
-  if (custom !== undefined) {
-    return {
-      path: parentPath,
-      custom: custom,
+      image: image,
+      number: number
     };
   }
 
   return {
     path: parentPath,
     target: '',
+    image: image,
+    number: number
   };
 };
