@@ -76,7 +76,7 @@ export const getItemMetadata = (item, parent) => {
   const external = item.external;
   const image = item.img;
   const number = item.number
-
+  const clickCall = item.click
   // item is its own parent
   if (parent === undefined) {
 
@@ -85,7 +85,8 @@ export const getItemMetadata = (item, parent) => {
         path: '',
         target: '',
         image: image,
-        number: number
+        number: number,
+        click: clickCall
       };
     }
 
@@ -95,7 +96,8 @@ export const getItemMetadata = (item, parent) => {
         path: '',
         target: external,
         image: image,
-        number: number
+        number: number,
+        click: clickCall
       };
     }
 
@@ -104,7 +106,8 @@ export const getItemMetadata = (item, parent) => {
         path: path,
         target: path,
         image: image,
-        number: number
+        number: number,
+        click: clickCall
       };
     }
 
@@ -113,7 +116,8 @@ export const getItemMetadata = (item, parent) => {
         path: '',
         target: '/' + element,
         image: image,
-        number: number
+        number: number,
+        click: clickCall
       };
     }
 
@@ -127,7 +131,8 @@ export const getItemMetadata = (item, parent) => {
       path: parentPath,
       target: external,
       image: image,
-      number: number
+      number: number,
+      click: clickCall
     };
   }
 
@@ -136,7 +141,8 @@ export const getItemMetadata = (item, parent) => {
       path: parentPath + path,
       target: parentPath + path,
       image: image,
-      number: number
+      number: number,
+      click: clickCall
     };
   }
 
@@ -145,7 +151,8 @@ export const getItemMetadata = (item, parent) => {
       path: parentPath,
       target: sanitizePath(parentPath + element),
       image: image,
-      number: number
+      number: number,
+      click: clickCall
     };
   }
 
@@ -153,6 +160,7 @@ export const getItemMetadata = (item, parent) => {
     path: parentPath,
     target: '',
     image: image,
-    number: number
+    number: number,
+    click: clickCall
   };
 };

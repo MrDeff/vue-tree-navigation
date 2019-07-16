@@ -5,6 +5,7 @@
 
     <span
       v-if="showLabel"
+      @click="handleClick"
       class="NavigationItem__label">
         <span v-if="item.image" class="NavigationItem__label__img"><img :src="item.image"/></span>
         <span class="NavigationItem__label__name">{{ item.name }}</span>
@@ -41,6 +42,11 @@ export default {
     required: true,
   },
   methods: {
+    handleClick(){
+      if(this.item.click && typeof this.item.click === 'function') {
+        this.item.click();
+      }
+    },
     isActive() {
       if (this.item.meta.target === '') {
         return false;
@@ -68,8 +74,7 @@ export default {
       return (
         this.item.path === undefined &&
         this.item.element === undefined &&
-        this.item.external === undefined &&
-        this.item.custom === undefined
+        this.item.external === undefined
       );
     },
     showRouterLink() {

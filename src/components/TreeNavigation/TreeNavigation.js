@@ -35,8 +35,8 @@ const TreeNavigation = {
       return [];
     },
     navItemsWithMetadata() {
-      const navItems = JSON.parse(JSON.stringify(this.navItems));
-      return insertMetadataToNavItems(navItems);
+      // const navItems = JSON.parse(JSON.stringify(this.navItems));
+      return insertMetadataToNavItems(this.navItems);
     },
   },
 

@@ -25,7 +25,7 @@ export default {
     return {
       items: [
         { name: 'Home', path: 'home' },
-        { name: 'red', image: 'http://icons.iconarchive.com/icons/custom-icon-design/flag-2/256/India-Flag-icon.png', number:23 },
+        { name: 'red',click: () => { console.log("ok") }, image: 'http://icons.iconarchive.com/icons/custom-icon-design/flag-2/256/India-Flag-icon.png', number:23 },
         {
           name: 'Products',
           path: 'products',
