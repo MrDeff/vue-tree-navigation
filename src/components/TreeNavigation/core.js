@@ -16,36 +16,39 @@ export const generateLevel = (
   const children = [];
 
   items.forEach(item => {
-    if (item.hasOwnProperty('children')) {
-      const navLevel = createElement(
-        NavigationLevel,
-        {
-          props: {
-            parentItem: item,
-            level,
-            defaultOpenLevel,
+    if(!item.hidden){
+      if (item.hasOwnProperty('children')) {
+        const navLevel = createElement(
+          NavigationLevel,
+          {
+            props: {
+              parentItem: item,
+              level,
+              defaultOpenLevel,
+            },
           },
-        },
-        [
-          ...generateLevel(
-            createElement,
-            item.children,
-            level + 1,
-            defaultOpenLevel
-          ),
-        ]
-      );
+          [
+            ...generateLevel(
+              createElement,
+              item.children,
+              level + 1,
+              defaultOpenLevel
+            ),
+          ]
+        );
 
-      children.push(createElement('li', [navLevel]));
-    } else {
-      const navItem = createElement(NavigationItem, {
-        props: {
-          item,
-        },
-      });
+        children.push(createElement('li', [navLevel]));
+      } else {
+        const navItem = createElement(NavigationItem, {
+          props: {
+            item,
+          },
+        });
 
-      children.push(createElement('li', [navItem]));
+        children.push(createElement('li', [navItem]));
+      }
     }
+
   });
 
   return children;

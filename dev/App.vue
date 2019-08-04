@@ -70,6 +70,7 @@ export default {
             { name: 'Company', element: 'company' },
             { name: 'Contact', element: 'contact' },
             { name: 'Blog', element: 'blog' },
+            { name: 'Test', element: 'test' },
             { name: 'Github', external: 'https://github.com' },
           ],
         },
