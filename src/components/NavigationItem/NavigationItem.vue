@@ -8,7 +8,7 @@
       @click="handleClick"
       class="NavigationItem__label">
         <span v-if="item.image" class="NavigationItem__label__img"><img :src="item.image"/></span>
-        <span class="NavigationItem__label__name">{{ item.name }}</span>
+        <span class="NavigationItem__label__name" :style="{color: setActiveColor ? item.activeColor : ''}">{{ item.name }}</span>
         <span v-if="item.children && item.children.length" class="NavigationItem__label__number">{{ item.children.length }}</span>
     </span>
 
@@ -38,8 +38,18 @@ export default {
     };
   },
   props: {
-    item: Object,
-    required: true,
+    item: {
+      type: Object,
+      required: true,
+    },
+     selectedKeyName: {
+       type: String,
+       default: '',
+     },
+     selectedKeys: {
+        type: Array,
+        default: [],
+     },
   },
   methods: {
     handleClick(){
@@ -94,6 +104,20 @@ export default {
         'NavigationItem--active': this.active,
       };
     },
+    setActiveColor(){
+      if(!this.item.activeColor){
+        return false
+      }
+      if(this.item.selectedKeys && this.item.selectedKeys.length){
+        return true
+      }
+      if(this.selectedKeys && this.selectedKeys.length && this.selectedKeys.indexOf(this.item[this.selectedKeyName]) >= 0){
+        return true
+      }
+      else{
+        return false
+      }
+    }
   },
   watch: {
     item() {

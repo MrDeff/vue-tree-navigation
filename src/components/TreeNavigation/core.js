@@ -11,7 +11,9 @@ export const generateLevel = (
   createElement,
   items,
   level,
-  defaultOpenLevel
+  defaultOpenLevel,
+  selectedKeyName = '',
+  selectedKeys = [],
 ) => {
   const children = [];
 
@@ -32,7 +34,9 @@ export const generateLevel = (
               createElement,
               item.children,
               level + 1,
-              defaultOpenLevel
+              defaultOpenLevel,
+              item.selectedKeyName,
+              item.selectedKeys,
             ),
           ]
         );
@@ -42,6 +46,8 @@ export const generateLevel = (
         const navItem = createElement(NavigationItem, {
           props: {
             item,
+            selectedKeyName,
+            selectedKeys,
           },
         });
 

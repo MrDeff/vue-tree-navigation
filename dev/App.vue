@@ -33,8 +33,11 @@ export default {
             {
               name: 'Running shoes',
               path: 'shoes',
+              selectedKeys:['red','Road'],
+              selectedKeyName:'name',
+              activeColor:'#32d6de',
               children: [
-                { name: 'red' },
+                { name: 'red' , activeColor:'#32d6de',},
                 { name: 'Road', element: 'road' },
                 { name: 'Trail', element: 'trail' },
               ],
@@ -66,6 +69,9 @@ export default {
         },
         {
           name: 'About',
+          selectedKeys:['Company'],
+          selectedKeyName:'name',
+          activeColor:'#32d6de',
           children: [
             { name: 'Company', element: 'company' },
             { name: 'Contact', element: 'contact' },
