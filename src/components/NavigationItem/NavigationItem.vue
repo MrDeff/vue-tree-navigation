@@ -48,7 +48,9 @@ export default {
      },
      selectedKeys: {
         type: Array,
-        default: [],
+        default: function () {
+          return []
+        },
      },
   },
   methods: {
