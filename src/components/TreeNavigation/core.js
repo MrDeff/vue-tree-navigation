@@ -83,6 +83,7 @@ export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const path = sanitizePath(item.path);
   const external = item.external;
+  const pathFull = pathFull;
   const image = item.img;
   const number = item.number
   const clickCall = item.click
@@ -139,6 +140,16 @@ export const getItemMetadata = (item, parent) => {
     return {
       path: parentPath,
       target: external,
+      image: image,
+      number: number,
+      click: clickCall
+    };
+  }
+
+  if (pathFull !== undefined) {
+    return {
+      path: parentPath + path,
+      target: parentPath,
       image: image,
       number: number,
       click: clickCall
