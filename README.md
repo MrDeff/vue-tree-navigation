@@ -154,16 +154,6 @@ import VueTreeNavigation from 'vue-tree-navigation';
 Vue.use(VueTreeNavigation);
 ```
 
-### Include with a script tag
-
-```html
-<script src="https://unpkg.com/vue-tree-navigation@4.0.0/dist/vue-tree-navigation.js"></script>
-
-<script>
-  Vue.use(VueTreeNavigation)
-</script>
-```
-
 _Example_
 
 ```html
