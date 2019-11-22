@@ -148,7 +148,7 @@ export const getItemMetadata = (item, parent) => {
 
   if (pathFull !== undefined) {
     return {
-      path: parentPath + path,
+      path: parentPath,
       target: parentPath,
       image: image,
       number: number,
