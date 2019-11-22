@@ -1,7 +1,7 @@
 import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
-import { sanitizeElement, sanitizePath } from '../utils';
+import {sanitizeElement, sanitizePath} from '../utils';
 
 /**
  * Recursive function.
@@ -18,7 +18,7 @@ export const generateLevel = (
   const children = [];
 
   items.forEach(item => {
-    if(!item.hidden){
+    if (!item.hidden) {
       if (item.hasOwnProperty('children')) {
         const navLevel = createElement(
           NavigationLevel,
@@ -83,10 +83,10 @@ export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const path = sanitizePath(item.path);
   const external = item.external;
-  const pathFull = pathFull;
+  const pathFull = item.pathFull;
   const image = item.img;
-  const number = item.number
-  const clickCall = item.click
+  const number = item.number;
+  const clickCall = item.click;
   // item is its own parent
   if (parent === undefined) {
 
@@ -94,12 +94,12 @@ export const getItemMetadata = (item, parent) => {
       return {
         path: '',
         target: '',
+        pathFull: false,
         image: image,
         number: number,
         click: clickCall
       };
     }
-
 
     if (external !== undefined) {
       return {
@@ -135,21 +135,20 @@ export const getItemMetadata = (item, parent) => {
 
   const parentPath = sanitizePath(parent.meta.path);
 
-
-  if (external !== undefined) {
+  if (pathFull !== false) {
     return {
       path: parentPath,
-      target: external,
+      target: path,
       image: image,
       number: number,
       click: clickCall
     };
   }
 
-  if (pathFull !== undefined) {
+  if (external !== undefined) {
     return {
       path: parentPath,
-      target: parentPath,
+      target: external,
       image: image,
       number: number,
       click: clickCall
